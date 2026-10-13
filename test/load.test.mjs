@@ -7,7 +7,7 @@ const options={now:Date.parse('2026-10-13T12:01:00.000Z')};
 const response=(body=data,status=200,type='application/json')=>new Response(body,{status,headers:{'content-type':type}});
 test('loads only fixed local source without credentials or redirects',async()=>{
   const got=await loadSnapshot('synthetic',{...options,fetcher:async(url,config)=>{
-    assert.equal(url,'/fixtures/synthetic.json');assert.equal(config.credentials,'omit');assert.equal(config.redirect,'error');return response();
+    assert.equal(url,'./fixtures/synthetic.json');assert.equal(config.credentials,'omit');assert.equal(config.redirect,'error');return response();
   }});assert.equal(got.records.length,3);
 });
 test('rejects arbitrary remote URL before network',async()=>{

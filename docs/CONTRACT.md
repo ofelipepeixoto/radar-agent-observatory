@@ -19,3 +19,5 @@ Histórico com observação mais antiga que 5 minutos recebe `stale`. Observaç�
 O loader usa fontes fixas, GET, credentials omit, redirects negados, timeout total de 5 segundos e validação após status HTTP e Content-Type. Falha oculta a visualização anterior, exibe código sanitizado e permite retry manual. Nenhuma operação de execução é repetida porque nenhuma existe.
 
 Um adapter futuro exige revisão própria de autenticação, tenant e provenance. Este contrato é independente, sem importação de implementações ou dados privados do ecossistema.
+
+`recordedAt` também aceita `null`: horário ausente não é preenchido com a hora da consulta. `observedAt` é a observação do snapshot, não prova frescor do evento. IDs de projeção gerados pelo adaptador devem ser rotulados como posição, sem fingir um recibo persistido.

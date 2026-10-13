@@ -1,3 +1,4 @@
+import {createRelationDiagram} from './relations.mjs';
 // Copyright (c) 2026 Carlos Felipe. SPDX-License-Identifier: MIT
 import {loadSnapshot} from './load.mjs';
 import {freshness} from './contract.mjs';
@@ -5,29 +6,13 @@ const $ = id => document.getElementById(id);
 const labels = {completed:'Concluído no registro', abstained:'Abstenção registrada', unknown:'Resultado desconhecido', failed:'Falha registrada'};
 let current = null;
 function node(tag, content) { const el = document.createElement(tag); el.textContent = content; return el; }
-function svgNode(tag, attributes, text) {
-  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
-  for (const [key, value] of Object.entries(attributes)) el.setAttribute(key, String(value));
-  if (text !== undefined) el.textContent = text;
-  return el;
-}
 function showDetail(record) {
   $('summary').textContent = record.summary;
   $('evidence').replaceChildren(); $('graph').replaceChildren();
   for (const e of record.evidence) $('evidence').append(node('li', `${e.document} · página ${e.page} · revisão ${e.revision} · ${e.id}`));
   if (!record.evidence.length) $('evidence').append(node('li', 'Sem referências declaradas.'));
   $('relations').hidden = record.evidence.length === 0;
-  const height = Math.max(100, record.evidence.length * 70);
-  const svg = svgNode('svg', {viewBox:`0 0 520 ${height}`, role:'img', 'aria-label':'Relações declaradas do registro para suas referências; mesma informação da lista textual'});
-  svg.append(svgNode('rect', {x:5,y:height/2-22,width:155,height:44,rx:8}));
-  svg.append(svgNode('text', {x:15,y:height/2+5}, 'Registro selecionado'));
-  record.evidence.forEach((e, i) => {
-    const y = i*70+35;
-    svg.append(svgNode('line', {x1:160,y1:height/2,x2:265,y2:y}));
-    svg.append(svgNode('rect', {x:265,y:y-22,width:250,height:44,rx:8}));
-    svg.append(svgNode('text', {x:275,y:y+5}, `Referência ${i+1} · p. ${e.page} · rev. ${e.revision}`));
-  });
-  $('graph').append(svg);
+  $('graph').append(createRelationDiagram(record.evidence));
 }
 function updateFreshness() {
   if (!current) return;
@@ -48,7 +33,7 @@ function render(snapshot) {
   for (const record of snapshot.records) {
     const li = document.createElement('li'); const button = node('button', `${labels[record.status]} · ${record.id}`);
     button.type = 'button'; button.addEventListener('click', () => showDetail(record));
-    li.append(button, node('small', record.recordedAt)); $('records').append(li);
+    li.append(button, node('small', record.recordedAt ?? 'Horário não informado no registro')); $('records').append(li);
   }
   if (snapshot.records.length) showDetail(snapshot.records[0]);
   $('snapshot').hidden = false;

@@ -1,7 +1,7 @@
 // Copyright (c) 2026 Carlos Felipe. SPDX-License-Identifier: MIT
 import {MAX_BYTES, validateSnapshot} from './contract.mjs';
 export const SOURCES = Object.freeze({
-  synthetic: '/fixtures/synthetic.json', historical: '/fixtures/historical.json', empty: '/fixtures/empty.json'
+  synthetic: './fixtures/synthetic.json', historical: './fixtures/historical.json', empty: './fixtures/empty.json', invalid: './fixtures/invalid.json'
 });
 export async function loadSnapshot(choice, {fetcher = fetch, timeoutMs = 5000, now = Date.now()} = {}) {
   if (!Object.hasOwn(SOURCES, choice)) throw new Error('INVALID_SOURCE');

@@ -2,10 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Radar Agent Observatory — experimental</title>
-  <link rel="stylesheet" href="/src/style.css">
-  <script type="module" src="/src/app.mjs"></script>
+  <link rel="stylesheet" href="./src/style.css">
+  <script type="module" src="./src/app.mjs"></script>
 </head>
 <body>
   <header><div><p class="eyebrow">RADAR / LABORATÓRIO</p><h1>Agent Observatory</h1></div><span class="badge">Experimental · somente leitura</span></header>
@@ -13,7 +14,7 @@
     <section class="intro"><h2>Entenda o registro. Preserve a dúvida.</h2><p>Explore recibos fictícios e suas referências. Nenhum estado desta tela comprova execução real, autorização atual, verdade da fonte ou produção.</p></section>
     <section class="controls" aria-label="Origem dos dados">
       <label for="source">Cenário sintético</label>
-      <select id="source"><option value="synthetic">Demonstração identificada</option><option value="historical">Histórico fictício desatualizado</option><option value="empty">Sem registros</option></select>
+      <select id="source"><option value="synthetic">Demonstração identificada</option><option value="historical">Histórico fictício desatualizado</option><option value="empty">Sem registros</option><option value="invalid">Entrada inválida fictícia</option></select>
       <button id="load" type="button">Carregar cenário</button>
     </section>
     <p class="notice">Telemetria real: não conectada. Não há agentes executados, chamadas de IA ou ações externas.</p>

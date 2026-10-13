@@ -52,3 +52,9 @@ Não copiar tokens, prompts, texto integral de documentos ou logs privados para 
 Implementação original de Carlos Felipe, MIT. A ideia de estudar visualização de etapas foi motivada por auditoria de ATSMATRIX; nenhum código, CSS, asset ou Content Hub upstream foi copiado. A marca ATSMATRIX não identifica este produto e não implica endosso. Veja [ORIGIN](docs/ORIGIN.md) e o [resumo público da auditoria](docs/AUDIT-PUBLIC.md).
 
 Não há garantia de segurança, escalabilidade, conformidade WCAG ou adequação comercial. O estado atual é um experimento verificável para revisão, sem merge/deploy autorizados por sua mera existência.
+
+## Demo estática sintética
+
+`npm run build` produz `dist/` com apenas dez arquivos explicitamente permitidos. Assets e fixtures usam caminhos relativos; o mesmo artefato funciona em uma subpasta. `npm run test:static` verifica o build em `/nested/demo/`, incluindo erro sintético selecionável. Não copie a raiz do repositório para hospedagem. O build não contém servidor, credenciais, endpoint de console ou dados privados. Publicação e URL devem ser confirmadas pelo serviço de hospedagem; a existência de `dist` não comprova deploy.
+
+O módulo `src/relations.mjs` e o contrato podem ser incorporados por consumidores com atribuição MIT, mantendo seu próprio backend autorizado. O diagrama só desenha relações recebidas e não autentica a fonte.

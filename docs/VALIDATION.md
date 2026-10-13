@@ -10,3 +10,7 @@ TEST VERIFIED: Node 24.19.0, Python 3.12.14, Playwright com Chromium 151.0.7922.
 Duas falhas iniciais pertenciam ao harness: expressão de espera bloqueada pela CSP e callback de rota cujo argumento opcional recebia Request. Corrigidos com locator assertion e assinatura explícita. A CSP permaneceu restritiva. O ensaio final passou.
 
 NOT VERIFIED: backend/autorização reais, LLM, leitores de tela, conformidade WCAG completa, outros navegadores, carga concorrente, escala de produção. Node 22 está previsto na CI; não foi executado localmente. A presença do workflow não prova CI verde. Nenhum deploy ou merge realizado por estes testes.
+
+## Continuação: build estático e módulos reutilizáveis
+
+Em 13/10/2026: `npm run check`, `npm test` (30 testes) e `npm run build` passaram. `npm run test:static` passou 14 verificações Chromium 151.0.7922.173 no artefato `dist`, servido localmente sob `/nested/demo/`. Capturas desktop, móvel 390 px e erro sintético revisadas. Nenhuma chamada externa da página ou persistência no navegador. O contrato aceita horário ausente como `null`, sem inventar conclusão. A publicação externa é uma etapa distinta e não foi verificada por esses testes locais.

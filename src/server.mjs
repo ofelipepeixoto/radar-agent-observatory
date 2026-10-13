@@ -4,9 +4,9 @@ import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 const paths = new Map([
   ['/', ['index.html', 'text/html; charset=utf-8']],
-  ...['app','load','contract'].map(n => [`/src/${n}.mjs`, [`src/${n}.mjs`, 'text/javascript; charset=utf-8']]),
+  ...['app','load','contract','relations'].map(n => [`/src/${n}.mjs`, [`src/${n}.mjs`, 'text/javascript; charset=utf-8']]),
   ['/src/style.css', ['src/style.css', 'text/css; charset=utf-8']],
-  ...['synthetic','historical','empty'].map(n => [`/fixtures/${n}.json`, [`fixtures/${n}.json`, 'application/json; charset=utf-8']])
+  ...['synthetic','historical','empty','invalid'].map(n => [`/fixtures/${n}.json`, [`fixtures/${n}.json`, 'application/json; charset=utf-8']])
 ]);
 export async function startServer(port = 0) {
   const server = http.createServer(async (req, res) => {

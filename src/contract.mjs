@@ -27,8 +27,8 @@ export function validateSnapshot(input, now = Date.now()) {
   const seen = new Set();
   const records = input.records.map(r => {
     object(r, ['id', 'status', 'recordedAt', 'summary', 'evidence']);
-    text(r.id, 80); text(r.summary, 400); iso(r.recordedAt);
-    if (seen.has(r.id) || Date.parse(r.recordedAt) > Date.parse(input.observedAt)) FAIL();
+    text(r.id, 80); text(r.summary, 400); if (r.recordedAt !== null) iso(r.recordedAt);
+    if (seen.has(r.id) || (r.recordedAt !== null && Date.parse(r.recordedAt) > Date.parse(input.observedAt))) FAIL();
     seen.add(r.id);
     if (!['completed', 'abstained', 'unknown', 'failed'].includes(r.status)) FAIL();
     if (!Array.isArray(r.evidence) || r.evidence.length > 5) FAIL();
