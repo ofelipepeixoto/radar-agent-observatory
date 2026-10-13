@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "mode": "synthetic",
+  "observedAt": "2026-10-13T12:00:00.000Z",
+  "sourceLabel": "Fixture fictícia — nenhum runtime conectado",
+  "records": [
+    {
+      "id": "recibo-ficticio-001",
+      "status": "completed",
+      "recordedAt": "2026-10-13T11:59:00.000Z",
+      "summary": "Leitura fictícia concluída no registro. Não comprova execução nem autorização atual.",
+      "evidence": [
+        {
+          "id": "referencia-ficticia-01",
+          "document": "Documento sintético de exemplo",
+          "page": 1,
+          "revision": 2
+        }
+      ]
+    },
+    {
+      "id": "recibo-ficticio-002",
+      "status": "abstained",
+      "recordedAt": "2026-10-13T11:58:00.000Z",
+      "summary": "Nenhuma referência elegível neste cenário fictício.",
+      "evidence": []
+    },
+    {
+      "id": "recibo-ficticio-003",
+      "status": "unknown",
+      "recordedAt": "2026-10-13T11:57:00.000Z",
+      "summary": "Resultado desconhecido. Não presumir falha nem repetir ação automaticamente.",
+      "evidence": []
+    }
+  ]
+}

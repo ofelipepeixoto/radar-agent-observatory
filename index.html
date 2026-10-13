@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Radar Agent Observatory — experimental</title>
+  <link rel="stylesheet" href="/src/style.css">
+  <script type="module" src="/src/app.mjs"></script>
+</head>
+<body>
+  <header><div><p class="eyebrow">RADAR / LABORATÓRIO</p><h1>Agent Observatory</h1></div><span class="badge">Experimental · somente leitura</span></header>
+  <main>
+    <section class="intro"><h2>Entenda o registro. Preserve a dúvida.</h2><p>Explore recibos fictícios e suas referências. Nenhum estado desta tela comprova execução real, autorização atual, verdade da fonte ou produção.</p></section>
+    <section class="controls" aria-label="Origem dos dados">
+      <label for="source">Cenário sintético</label>
+      <select id="source"><option value="synthetic">Demonstração identificada</option><option value="historical">Histórico fictício desatualizado</option><option value="empty">Sem registros</option></select>
+      <button id="load" type="button">Carregar cenário</button>
+    </section>
+    <p class="notice">Telemetria real: não conectada. Não há agentes executados, chamadas de IA ou ações externas.</p>
+    <p id="state" role="status" aria-live="polite">Escolha um cenário para começar.</p>
+    <p id="error" role="alert" hidden></p>
+    <section id="snapshot" hidden aria-label="Leitura do cenário">
+      <div class="metadata"><strong id="mode"></strong><span id="freshness"></span><span id="observed"></span><span id="origin"></span></div>
+      <p id="empty" hidden>Nenhum registro disponível. Ausência de dados não significa sucesso nem falha.</p>
+      <div class="columns"><section aria-labelledby="records-title"><h2 id="records-title">Registros</h2><ul id="records"></ul></section>
+      <section id="detail" aria-labelledby="detail-title"><h2 id="detail-title">Detalhe do registro</h2><p id="summary">Selecione um registro.</p><p id="limits">Autorização atual: não verificada. As relações abaixo são declaradas pela entrada, não validadas nesta tela.</p><ul id="evidence"></ul>
+      <details id="relations"><summary>Ver relações declaradas</summary><div id="graph"></div><p>O diagrama repete a lista textual acima. Não representa atividade ao vivo.</p></details></section></div>
+    </section>
+  </main>
+  <footer>Dados somente fictícios nesta versão. Sem autenticação de produção, persistência de segredos ou conexão com consoles privados.</footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "radar-agent-observatory",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Experimental read-only receipt viewer with explicit evidence limits.",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "start": "node src/server.mjs",
+    "check": "node --check src/contract.mjs && node --check src/load.mjs && node --check src/app.mjs && node --check src/server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:browser": "python3 scripts/browser_test.py"
+  },
+  "license": "MIT"
+}
