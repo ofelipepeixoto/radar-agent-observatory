@@ -35,3 +35,9 @@ test('freshness distinguishes synthetic, recent historical and stale historical'
   const f=fixture();assert.equal(freshness(f,now),'synthetic');f.mode='historical';
   assert.equal(freshness(f,now),'recent');assert.equal(freshness(f,now+300_000),'stale');
 });
+
+test('missing record timestamp remains null, never observation time',()=>{
+  const value=JSON.parse(readFileSync(new URL('../fixtures/synthetic.json',import.meta.url),'utf8'));
+  value.records[0].recordedAt=null;
+  assert.equal(validateSnapshot(value,Date.parse('2026-10-13T12:01:00.000Z')).records[0].recordedAt,null);
+});
